@@ -1,0 +1,22 @@
+MOVIX BUILD STATUS — 18 NOV 2026
+
+Completed in this frontend pass:
+- Retained the existing MOVIX dark navy / red visual design.
+- Retained mobile OTP flow and Supabase Auth integration hooks.
+- Added catalogue search for Movies and Series.
+- Made genre filters derive from available catalogue genres.
+- Added Account Profile page accessible from the profile menu.
+- Kept Subscription and Log out inside the profile menu.
+- Kept My List in browser storage and improved catalogue text escaping.
+- Added setup notes explaining preview-only and incomplete production features.
+- JavaScript syntax validation passed with Node.js.
+
+Not completed / not production-ready:
+- Real OTP needs Supabase project configuration and an SMS provider.
+- Catalogue is sample data; licensed content and real Supabase catalogue queries are still required.
+- My List is browser-local, not cross-device Supabase sync.
+- Continue Watching has no real player progress integration.
+- HLS video playback, subtitles and playback authorization are not implemented.
+- Razorpay checkout and verified server-side webhooks are not implemented.
+- Admin dashboard is not implemented.
+- Security review, deployment, CDN setup and 100,000-concurrent-user load testing are not done.

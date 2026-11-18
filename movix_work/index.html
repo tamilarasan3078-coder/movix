@@ -1,0 +1,138 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="MOVIX — discover your next story.">
+  <meta name="theme-color" content="#08090d">
+  <title>MOVIX — Stream Your Stories</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <section id="loginScreen" class="login-screen">
+    <div class="login-panel">
+      <a class="brand brand-large" href="#" aria-label="MOVIX home">MOV<span>IX</span></a>
+      <p class="eyebrow">YOUR NEXT STORY STARTS HERE</p>
+      <h1>Welcome to MOVIX</h1>
+      <p class="muted intro">Sign in with your email and step into a world of stories.</p>
+
+      <form id="loginForm">
+        <label for="email">EMAIL ADDRESS</label>
+        <div class="phone-wrap">
+          <input id="email" type="email" placeholder="Enter your email address" autocomplete="email" required>
+        </div>
+
+        <div id="otpGroup" class="hidden">
+          <label for="otp">ONE-TIME PASSWORD</label>
+          <p id="otpSentTo" class="otp-hint">Enter the 6-digit code sent to your email.</p>
+          <input id="otp" type="text" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="Enter 6-digit OTP" autocomplete="one-time-code">
+
+          <div class="otp-actions">
+            <button id="changeNumberButton" class="text-button" type="button">Change email</button>
+            <button id="resendOtpButton" class="text-button" type="button" disabled>Resend code in 30s</button>
+          </div>
+        </div>
+
+        <button id="loginButton" class="button button-primary button-wide" type="submit">Continue</button>
+      </form>
+
+      <div id="demoOtp" class="demo-otp hidden" aria-live="polite"></div>
+      <p id="loginMessage" class="form-message">Sign in with your email verification code.</p>
+      <p class="tiny muted">By continuing, you agree to the MOVIX terms and privacy policy.</p>
+    </div>
+  </section>
+
+  <!-- MAIN WEBSITE -->
+  <div id="site" class="site hidden">
+
+    <aside class="sidebar">
+      <a class="brand side-brand" href="#" data-page="home">MOV<span>IX</span></a>
+
+      <p class="nav-label">DISCOVER</p>
+      <nav>
+        <button class="nav-link active" data-page="home"><span class="nav-icon">⌂</span>Home</button>
+        <button class="nav-link" data-page="movies"><span class="nav-icon">▣</span>Movies</button>
+        <button class="nav-link" data-page="series"><span class="nav-icon">▤</span>Series</button>
+      </nav>
+
+      <p class="nav-label library-label">YOUR LIBRARY</p>
+      <nav>
+        <button class="nav-link" data-page="continue"><span class="nav-icon">◷</span>Continue Watching</button>
+        <button class="nav-link" data-page="mylist"><span class="nav-icon">＋</span>My List</button>
+      </nav>
+
+      <!-- ADMIN NAVIGATION: hidden until admin verification -->
+      <div id="adminNavigation" class="hidden">
+        <p class="nav-label library-label">MANAGEMENT</p>
+        <nav>
+          <button class="nav-link" data-page="admin">
+            <span class="nav-icon">▦</span>Admin Dashboard
+          </button>
+        </nav>
+      </div>
+
+      <div class="sidebar-bottom">
+        <span class="status-dot"></span> MOVIX
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="mobile-brand">MOV<span>IX</span></div>
+
+        <div class="topbar-actions">
+          <div class="profile-wrap">
+            <button id="profileButton" class="avatar" aria-label="Open profile menu" aria-haspopup="true" aria-expanded="false">M</button>
+
+            <div id="profileMenu" class="profile-menu hidden" role="menu" aria-label="Profile options">
+              <div class="profile-heading">
+                <strong>My Profile</strong>
+                <small>MOVIX account</small>
+              </div>
+              <button class="profile-menu-item" data-page="profile" role="menuitem">Account Profile</button>
+              <button class="profile-menu-item" data-page="subscription" role="menuitem">Subscription</button>
+              <button class="profile-menu-item logout-item" id="logoutButton" role="menuitem">Log out</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div id="pageContent" class="page-content"></div>
+      <footer class="footer">© 2026 MOVIX. A world of stories, one place.</footer>
+    </main>
+  </div>
+
+  <!-- MOVIE DETAILS AND PLAYER -->
+  <div id="detailsModal" class="details-modal hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="detailsTitle">
+
+    <div class="details-panel">
+      <button id="detailsClose" class="details-close" aria-label="Close details">×</button>
+
+      <div class="movie-info-section">
+        <p class="page-kicker">MOVIX TITLE</p>
+        <h2 id="detailsTitle"></h2>
+        <p id="detailsMeta" class="details-meta"></p>
+        <p id="detailsDescription" class="details-description"></p>
+      </div>
+
+      <div id="movixPlayerPanel" class="movix-player-panel"></div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/movies.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
